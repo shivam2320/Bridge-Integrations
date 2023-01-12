@@ -14,6 +14,19 @@ contract HyphenProvider is ReentrancyGuard, Ownable {
 
     ILiquidityPool public hyphenLiquidityPool;
 
+    event NativeFundsTransferred(
+        address receiver,
+        uint256 toChainId,
+        uint256 amount
+    );
+
+    event ERC20FundsTransferred(
+        address receiver,
+        uint256 toChainId,
+        uint256 amount,
+        address tokenAddress
+    );
+
     // @notice Liquidty Pool Address required
     constructor(address _hyphen) {
         hyphenLiquidityPool = ILiquidityPool(_hyphen);
